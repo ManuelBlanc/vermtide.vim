@@ -43,8 +43,8 @@ highlight default link VTLogPath              Underlined
 highlight default link VTLogURL               Underlined
 highlight default link VTLuaConstant          Constant
 highlight default link VTLuaType              Type
-highlight default link VTError                ErrorMsg
-highlight default link VTWarning              WarningMsg
+highlight default link VTLogError             ErrorMsg
+highlight default link VTLogWarning           WarningMsg
 
 
 " Toolbox {{{1
