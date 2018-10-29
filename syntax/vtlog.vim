@@ -14,8 +14,8 @@ syntax match VTLogWarning #\c.*\Hwarning.*# contains=ALL
 
 " Match entries
 syntax region VTLogBlock matchgroup=VTLogBlockDelimiter start=#<<\z([^>]*\)>># end=#<</\z1>># fold transparent
-syntax region VTLogLuaError matchgroup=VTLogBlockDelimiter start=#<<Lua Error>># end=#<</Lua Error>># contains=VTLogPath
-syntax region VTLogLuaStack matchgroup=VTLogBlockDelimiter start=#<<Lua Stack>># end=#<</Lua Stack>># contains=VTLogModule,VTLogPath
+syntax region VTLogLuaError matchgroup=VTLogBlockDelimiter start=#<<Lua Error>># end=#<</Lua Error>># fold contains=VTLogPath
+syntax region VTLogLuaStack matchgroup=VTLogBlockDelimiter start=#<<Lua Stack>># end=#<</Lua Stack>># fold contains=VTLogModule,VTLogPath
 
 " Basic log components
 syntax match VTLogDate   #^\(\d\{2}:\)\{2}\d\{2}\.\d\{3}# display
