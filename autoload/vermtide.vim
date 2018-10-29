@@ -2,9 +2,9 @@
 "  Maintainer: ManuelBlanc <https://github.com/ManuelBlanc>
 "     License: MIT
 
-let s:GLOB_PATH = $APPDATA . '/Fatshark/Vermintide 2/console_logs'
+let g:vermtide_logs_path = $APPDATA . '/Fatshark/Vermintide 2/console_logs'
 
-" The largest element of a non-empty list
+" maximum() Get the largest element of a non-empty list {{{1
 function! vermtide#maximum(list)
   let maximal = a:list[0]
   for item in a:list
@@ -15,12 +15,22 @@ function! vermtide#maximum(list)
   return maximal
 endfunction
 
-" Open the latest log file
+
+" open_log() Open the latest log file {{{1
 function! vermtide#open_log()
-  let log_list = glob(s:GLOB_PATH . '/*.log', 1, 1)
+  let log_list = glob(g:vermtide_logs_path . '/*.log', 1, 1)
+  if empty(log_list)
+    return
+  endif
   let latest_log = vermtide#maximum(log_list)
-  execute 'edit +/Lua\ Error ' . latest_log
+  execute 'edit +/Lua\ Error' latest_log
   setlocal bufhidden=delete
   setlocal filetype=vtlog
+endfunction
+
+
+" launch_game() Launch the game from Steam {{{1
+function! vermtide#launch_game()
+  call system('start steam://run/552500')
 endfunction
 
